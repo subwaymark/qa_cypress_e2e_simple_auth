@@ -17,26 +17,6 @@
 import './commands';
 
 // eslint-disable-next-line max-len
-const listOfRedColor = 'Blood Red  Brick Red  Bright Red  Brown  Burgundy  Burnt Umber  Burnt Orange  Burnt Sienna  Byzantium  Cadmium Red  Cardinal Red  Carmine  Cerise  Cherry  Chestnut  Claret  Coral Pink  Cordovan  Crimson  Dark Red  Falu Red  Garnet  Mahogany  Maroon  Marsala  Mulberry  Neon Red  Oxblood  Pastel Red  Persimmon  Poppy  Puce  Raspberry  Red  Red Brown  Red Ochre  Red Orange  Red Purple  Rose Red  Ruby Red  Russet  Salmon  Scarlet  Sunset Orange  Terra Cotta  Tuscan Red  Tyrian Purple  Venetian Red  Vermillion  Wine'
-  .split('  ');
-const basicRedShades = [
-  [255, 0, 64],
-  [255, 0, 43],
-  [255, 0, 21],
-  [255, 0, 0],
-  [255, 21, 0],
-  [255, 43, 0],
-  [255, 77, 77],
-  [255, 51, 51],
-  [255, 26, 26],
-  [255, 0, 0],
-  [230, 0, 0],
-  [204, 0, 0],
-  [179, 0, 0],
-  [198, 15, 19],
-  [151, 11, 14]
-];
-
 /**
  *
  * @param {array} array
@@ -62,7 +42,7 @@ function chooseRandomFromArray(array, howMany = 1) {
   const result = [];
 
   for (let i = 1; i <= elementsToProcess; i++) {
-    const elementIndex = Math.round(Math.random() * (arrayCopy.length - 1));
+    const elementIndex = Math.floor(Math.random() * arrayCopy.length);
     const element = arrayCopy.splice(elementIndex, 1);
 
     result.push(element.at(0));
@@ -75,6 +55,7 @@ function chooseRandomFromArray(array, howMany = 1) {
   return result;
 }
 
+/*
 /**
  *
  * @param {number} r /0 - 255
@@ -83,6 +64,7 @@ function chooseRandomFromArray(array, howMany = 1) {
  * @returns {array: {number, number, number} }
  */
 
+/* canceled
 function convertRGBTo255 (r = 0, g = 0, b = 0) {
   const toReturn = [];
   const validRGB = [];
@@ -113,6 +95,7 @@ function convertRGBTo255 (r = 0, g = 0, b = 0) {
 
   return toReturn;
 }
+*/
 
 const app = window.top;
 if (!app.document.head.querySelector('[data-hide-command-log-request]')) {
@@ -124,11 +107,6 @@ if (!app.document.head.querySelector('[data-hide-command-log-request]')) {
   app.document.head.appendChild(style);
 };
 
-export {
-  chooseRandomFromArray,
-  listOfRedColor,
-  convertRGBTo255,
-  basicRedShades
-};
+export { chooseRandomFromArray as default };
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
