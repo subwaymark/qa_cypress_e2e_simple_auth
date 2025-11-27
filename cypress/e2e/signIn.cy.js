@@ -42,7 +42,7 @@ describe('Sign In page', {
   });
 
   it('should provide an ability to log out', () => {
-    cy.request({
+    cy.visit({
       method: 'POST',
       url: 'https://the-internet.herokuapp.com/authenticate',
       body: {
@@ -50,7 +50,6 @@ describe('Sign In page', {
         password: validPassword
       }
     });
-    cy.visit('/secure');
     cy.get('[href*="/logout"]')
       .contains('Logout')
       .click();
